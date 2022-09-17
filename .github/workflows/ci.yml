@@ -1,0 +1,22 @@
+name: Orangehrmlive negative login test
+
+on: [push]
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Install
+        run: npm install
+      - name: WDIO run
+        run: npm run run:github
+      - name: Output test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Reports
+          path: allure-report
