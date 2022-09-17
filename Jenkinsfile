@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Run e2e test with Edge Browser') {
             steps {
-                bat encoding: 'ASCII', returnStatus: true, script: 'npm run e2e:chrome'
+                bat encoding: 'ASCII', returnStatus: true, script: 'npm run run:github'
             }
         }
         stage('Generate allure report') {
