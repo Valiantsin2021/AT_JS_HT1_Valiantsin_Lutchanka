@@ -9,11 +9,11 @@
         "e2e:edge": "npm run clean && npm run wdio:edge -- --suite e2e",
         "negative:chrome": "npm run clean && npm run wdio -- --suite negative",
         "negative:edge": "npm run clean && npm run wdio -- --suite negative",
-        "run:github": "npm run wdio-headless -- --suite negative",
+        "run:github": "npm run clean && npm run wdio-headless -- --suite e2e && npm run wdio-headless -- --suite negative",
         "clean": "rimraf allure-report && rimraf allure-results && rimraf screenshots/failed-tests/*",
         "wdio": "wdio run wdio.conf.js",
         "wdio:edge": "wdio run wdio-Edge.conf.js",
-        "wdio-headless": "npm run clean && wdio run wdio-github.conf.js"
+        "wdio-headless": "wdio run wdio-github.conf.js"
     },
     "keywords": [
         "WebdriverIO"
