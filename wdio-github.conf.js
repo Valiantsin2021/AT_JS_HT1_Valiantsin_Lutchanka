@@ -10,13 +10,5 @@ exports.config = {
         args: ['--headless', '--disable-gpu', '--disable-dev-shm-usage', '--window-size=1920,1080'],
       },
     },
-    {
-      maxInstances: 3,
-      browserName: 'MicrosoftEdge',
-      acceptInsecureCerts: true,
-      'ms:edgeOptions': {
-        args: ['--headless', '--disable-gpu', '--disable-dev-shm-usage', '--window-size=1920,1080'],
-      },
-    },
   ],
 }

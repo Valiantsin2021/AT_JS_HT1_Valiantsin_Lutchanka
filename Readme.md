@@ -32,3 +32,4 @@
 ### to run e2e test suite with Microsoft Edge browser: npm run e2e:edge
 ### to run negative test suite with Chrome browser: npm run negative:chrome
 ### to run negative test suite with Microsoft Edge browser: npm run negative:edge
+### to run e2e and negative suites with Chrome browser: npm run run:github

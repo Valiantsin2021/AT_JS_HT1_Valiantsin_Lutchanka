@@ -22,7 +22,7 @@ class JobPage extends BasePage{
         return $('button[type="submit"]')
     }
     get successModal () {
-        return $('//p[text()="Success"]')
+        return $('div.oxd-toast-content--success')
     }
     get errorMessage () {
         return $('.oxd-input-field-error-message')
