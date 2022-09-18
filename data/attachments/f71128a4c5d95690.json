@@ -1,0 +1,9 @@
+{
+  "script": "return ((a) => {\n            a.value = null\n        }).apply(null, arguments)",
+  "args": [
+    {
+      "element-6066-11e4-a52e-4f735466cecf": "7606eff4-7d2f-43ae-8a20-8da4f3ca5e54",
+      "ELEMENT": "7606eff4-7d2f-43ae-8a20-8da4f3ca5e54"
+    }
+  ]
+}
