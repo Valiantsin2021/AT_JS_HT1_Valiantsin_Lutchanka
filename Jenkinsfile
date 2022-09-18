@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git download') {
             steps {
-                git branch: 'main', url: 'https://github.com/Valiantsin2021/test.git'
+                git credentialsId: 'ce02e462-2d72-4f92-a2ac-2fce65442e18', url: 'https://github.com/Valiantsin2021/test.git'
             }
         }
         stage('Install') {
@@ -12,7 +12,7 @@ pipeline {
                 bat encoding: 'ASCII', returnStatus: true, script: 'npm install'
             }
         }
-        stage('Run e2e test with Edge Browser') {
+        stage('Run e2e and login negative test suites with Chrome browser') {
             steps {
                 bat encoding: 'ASCII', returnStatus: true, script: 'npm run run:github'
             }

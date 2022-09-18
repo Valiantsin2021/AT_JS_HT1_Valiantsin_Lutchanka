@@ -42,7 +42,7 @@ const {
     } = require('../utils/constants.js')
 
 describe(`Should login to ${baseUrl}, create new job, change it and delete it`, () => {
-    it(`should open ${baseUrl} and check title, check page header and login with valid credentials`, async () => {
+    it(`Should open ${baseUrl} and check title, check page header and login with valid credentials`, async () => {
         await LoginPage.open();
         await LoginPage.maximize();
         expect(browser).toHaveTitle(title);
@@ -51,7 +51,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         await expect(LoginPage.passInput).toHaveValue('')
         await LoginPage.login(login, pass);
     });
-    it('should check the Main Page header, url, side menu elements text and profile picture are present', async () => {
+    it('Should check the Main Page header, url, side menu elements text and profile picture are present', async () => {
         await expect(MainPage.menuList).toBeDisplayed();
         expect(browser).toHaveUrlContaining(mainUrl);
         await expect(MainPage.profileImg).toHaveAttr('alt', profileImgAlt);
@@ -61,7 +61,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         await expect(MainPage.sideMenu).toBeElementsArrayOfSize(sideMenuElementsLength);
         await checkArray(MainPage.sideMenu, sideMenuText)
     });
-    it('should enter Admin page and check page url, header, top menu elements text', async () => {
+    it('Should enter Admin page and check page url, header, top menu elements text are present', async () => {
        await MainPage.clickAdmin();
        await expect(AdminPage.header).toBeDisplayed();
        expect(browser).toHaveUrlContaining(adminUrl);
@@ -70,7 +70,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
        await expect(AdminPage.topMenu).toBeElementsArrayOfSize(topMenuLength);
        await checkArray(AdminPage.topMenu, topMenuText)
     });
-    it('should navigate to Admin -> Job -> Job Titles, check page menu, url, header text and Job Titles grid', async () => {
+    it('Should navigate to Admin -> Job -> Job Titles, check page menu, url, header text and Job Titles grid are present', async () => {
         await AdminPage.clickJob();
         await expect(AdminPage.jobTitlesDropdown).toBeElementsArrayOfSize(jobTitlesLength);
         await checkArray(AdminPage.jobTitlesDropdown, jobTitles)
@@ -80,7 +80,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         await expect(JobPage.gridList).toBeDisplayed();
         baseGrid = await(JobPage.getGridSize());
      });
-    it('should click on the Add button, add job title, description, note, check the value of input fields and succesfully save the data', async () => {
+    it('Should click on the Add button, add Job Title and check the value of input field', async () => {
         await JobPage.clickAddBtn();
         await expect(JobPage.header).toHaveText(jobHeaderAdd);
         expect(browser).toHaveUrlContaining(saveUrl);
@@ -89,14 +89,14 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         await JobPage.inputJobTitle(jobTitle);
         await expect(JobPage.jobTitleInput).toHaveValue(jobTitle);
     });
-    it('should add job description and check the value of job description input field', async () => {
+    it('Should add Job Description and check the value of input field', async () => {
         await expect(JobPage.jobDescriptionInput).toBeDisplayed();
         await expect(JobPage.jobDescriptionInput).toHaveAttr('placeholder', descriptionPlaceholder);
         await expect(JobPage.jobDescriptionInput).toHaveValue('');
         await JobPage.inputJobDescription(jobDescription);
         await expect(JobPage.jobDescriptionInput).toHaveValue(jobDescription);
     });
-    it('should add job note, check the value of note input field and save the input data', async () => {
+    it('Should add Job Note, check the value of input field click Save button and check the success message is shown', async () => {
         await expect(JobPage.noteInput).toBeDisplayed();
         await expect(JobPage.noteInput).toHaveAttr('placeholder', notePlaceholder);
         await expect(JobPage.noteInput).toHaveValue('');
@@ -107,7 +107,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         await JobPage.clickSave();
         await expect(JobPage.successModal).toBeDisplayed();
     });
-    it('should check newly added title is visible on the grid', async () => {
+    it('Should check newly added Job Title is visible on the grid', async () => {
         await expect(JobPage.gridList).toBeDisplayed();
         await expect(JobPage.gridTitle).toBeDisplayed();
         await expect(JobPage.gridDescription).toBeDisplayed();
@@ -117,7 +117,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         changedGrid = await(JobPage.getGridSize())
         expectChai(changedGrid - baseGrid).to.eq(1)
     });
-    it('Should check the impossibility to create the same job again', async () => {
+    it('Should check the impossibility to create the same Job Title again', async () => {
         await JobPage.clickAddBtn();
         await expect(JobPage.header).toHaveText(jobHeaderAdd);
         await expect(JobPage.jobTitleInput).toBeDisplayed();
@@ -128,7 +128,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         await expect(JobPage.errorMessage).toBeDisplayed();
         expectChai(await JobPage.errorMessage.getText()).to.be.equal(errorMsg)
     })
-    it('Should modify the created Job Title (select your field -> click on the Edit button)', async () => {
+    it('Should modify the created Job Title and check the success message is shown', async () => {
         await AdminPage.clickJob();
         await AdminPage.clickJobTitles();
         await expect(JobPage.checkbox).toBeDisplayed();
