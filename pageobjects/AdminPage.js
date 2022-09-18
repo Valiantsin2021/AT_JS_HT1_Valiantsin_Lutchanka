@@ -1,4 +1,4 @@
-const BasePage = require("./BasePage");
+const BasePage = require('./BasePage');
 
 class AdminPage extends BasePage{
     get header () {

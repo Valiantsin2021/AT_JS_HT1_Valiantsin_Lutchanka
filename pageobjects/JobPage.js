@@ -1,4 +1,4 @@
-const { jobTitle, jobDescription, newJobTitle, newJobDescription } = require("../utils/constants");
+const { jobTitle, jobDescription, newJobTitle, newJobDescription } = require('../utils/constants');
 
 const BasePage = require('./BasePage')
 

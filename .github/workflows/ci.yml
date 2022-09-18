@@ -1,4 +1,4 @@
-name: Orangehrmlive negative login test
+name: Orangehrmlive e2e test and negative login test with Chrome browser
 
 on: [push]
   

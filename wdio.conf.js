@@ -46,12 +46,12 @@ exports.config = {
         timeout: 60000
     },
     
-    beforeSuite: function (suite) {
-        browser.addCommand("waitAndClick", async function () {
+    beforeSuite: function () {
+        browser.addCommand('waitAndClick', async function () {
             await this.waitForDisplayed()
             await this.click()
         }, true),
-        browser.addCommand("waitAndSetValue", async function (value) {
+        browser.addCommand('waitAndSetValue', async function (value) {
             await this.waitForDisplayed()
             await this.setValue(value)
         }, true)

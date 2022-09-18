@@ -47,8 +47,8 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         await LoginPage.maximize();
         expect(browser).toHaveTitle(title);
         await expect(LoginPage.header).toHaveText(loginHeader);
-        await expect(LoginPage.loginInput).toHaveValue('')
-        await expect(LoginPage.passInput).toHaveValue('')
+        await expect(LoginPage.loginInput).toHaveValue('');
+        await expect(LoginPage.passInput).toHaveValue('');
         await LoginPage.login(login, pass);
     });
     it('Should check the Main Page header, url, side menu elements text and profile picture are present', async () => {
@@ -56,10 +56,10 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         expect(browser).toHaveUrlContaining(mainUrl);
         await expect(MainPage.profileImg).toHaveAttr('alt', profileImgAlt);
         await expect(MainPage.header).toBeDisplayed();
-        await expect(MainPage.header).toHaveText(mainHeader)
+        await expect(MainPage.header).toHaveText(mainHeader);
         await expect(MainPage.sideMenu).toBeDisplayed();
         await expect(MainPage.sideMenu).toBeElementsArrayOfSize(sideMenuElementsLength);
-        await checkArray(MainPage.sideMenu, sideMenuText)
+        await checkArray(MainPage.sideMenu, sideMenuText);
     });
     it('Should enter Admin page and check page url, header, top menu elements text are present', async () => {
        await MainPage.clickAdmin();
@@ -68,17 +68,17 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
        await expect(AdminPage.header).toHaveText(adminHeader);
        await expect(AdminPage.topMenu).toBeDisplayed();
        await expect(AdminPage.topMenu).toBeElementsArrayOfSize(topMenuLength);
-       await checkArray(AdminPage.topMenu, topMenuText)
+       await checkArray(AdminPage.topMenu, topMenuText);
     });
     it('Should navigate to Admin -> Job -> Job Titles, check page menu, url, header text and Job Titles grid are present', async () => {
         await AdminPage.clickJob();
         await expect(AdminPage.jobTitlesDropdown).toBeElementsArrayOfSize(jobTitlesLength);
-        await checkArray(AdminPage.jobTitlesDropdown, jobTitles)
+        await checkArray(AdminPage.jobTitlesDropdown, jobTitles);
         await AdminPage.clickJobTitles();
         expect(browser).toHaveUrlContaining(jobUrl);
         await expect(JobPage.header).toHaveText(jobHeader);
         await expect(JobPage.gridList).toBeDisplayed();
-        baseGrid = await(JobPage.getGridSize());
+        baseGrid = await JobPage.getGridSize();
      });
     it('Should click on the Add button, add Job Title and check the value of input field', async () => {
         await JobPage.clickAddBtn();
@@ -114,8 +114,8 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         expect(browser).toHaveUrlContaining(jobUrl);
         expectChai(await JobPage.gridTitle.getText()).to.eq(jobTitle)
         expectChai(await JobPage.gridDescription.getText()).to.eq(jobDescription)
-        changedGrid = await(JobPage.getGridSize())
-        expectChai(changedGrid - baseGrid).to.eq(1)
+        changedGrid = await JobPage.getGridSize();
+        expectChai(changedGrid - baseGrid).to.eq(1);
     });
     it('Should check the impossibility to create the same Job Title again', async () => {
         await JobPage.clickAddBtn();
@@ -167,7 +167,7 @@ describe(`Should login to ${baseUrl}, create new job, change it and delete it`, 
         expectChai(await JobPage.getGridSize()).to.eq(baseGrid);
         expectChai(await JobPage.newGridTitle[0]).to.eq(undefined);
     })
-    it('Should successfully log out from the account', async () =>{
+    it('Should successfully log out from the account', async () => {
         await JobPage.logoutMenu.waitAndClick();
         await expect(JobPage.logoutDropdown).toBeDisplayed();
         await expect(JobPage.logoutDropdown).toBeElementsArrayOfSize(logoutMenuLength);

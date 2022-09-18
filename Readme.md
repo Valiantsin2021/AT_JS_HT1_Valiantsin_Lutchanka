@@ -23,6 +23,7 @@
 8.  Chai expect assertion
 9.  Jenkinsfile (e2e and negative suites run with Chrome browser and artefacts saved)
 10. Github Actions yml file (e2e and negative suites run with Chrome browser and artefacts saved)
+11. Allure report publish on gh-pages
 
 ## Extras
 #### Negative login test suite added
