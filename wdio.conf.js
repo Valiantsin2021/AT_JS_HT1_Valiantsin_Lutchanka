@@ -1,4 +1,10 @@
 const allure = require('allure-commandline');
+const brows = require('./utils/browsers.js')
+const ENV = process.env.ENV
+if(!ENV || !['chrome', 'edge', 'firefox'].includes(ENV)){
+    console.log('Please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative)"')
+    process.exit()
+}
 
 exports.config = {
    
@@ -9,18 +15,13 @@ exports.config = {
         e2e: ['./test/*.e2e.js'],
         negative: ['./test/*.negative.js']
     },
-    maxInstances: 3,
+    maxInstances: 2,
     
-    capabilities: [{
-        maxInstances: 1,
-        browserName: 'chrome',
-        acceptInsecureCerts: true
-        },
-    ],
+    capabilities: [brows[process.env.ENV]],
     
     logLevel: 'info',
     
-    bail: 0,
+    bail: 1,
     
     baseUrl: 'https://opensource-demo.orangehrmlive.com/',
     
@@ -32,7 +33,7 @@ exports.config = {
     services: ['selenium-standalone'],
     
     framework: 'mocha',
-   
+    specFileRetries: 2,
     reporters: ['spec', 
     ['allure', {
         outputDir: 'allure-results',

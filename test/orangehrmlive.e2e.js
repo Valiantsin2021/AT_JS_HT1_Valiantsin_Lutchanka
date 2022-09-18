@@ -42,9 +42,12 @@ const {
     } = require('../utils/constants.js')
 
 describe(`Should login to ${baseUrl}, create new job, change it and delete it`, () => {
+    before( async () => {
+        await browser.deleteCookies();
+    })   
     it(`Should open ${baseUrl} and check title, check page header and login with valid credentials`, async () => {
-        await LoginPage.open();
         await LoginPage.maximize();
+        await LoginPage.open();
         expect(browser).toHaveTitle(title);
         await expect(LoginPage.header).toHaveText(loginHeader);
         await expect(LoginPage.loginInput).toHaveValue('');

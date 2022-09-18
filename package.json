@@ -4,15 +4,13 @@
     "description": "End to end + negative login test of https://opensource-demo.orangehrmlive.com/",
     "main": "index.js",
     "scripts": {
-        "test": "npm run clean && npm run wdio",
-        "e2e:chrome": "npm run clean && npm run wdio -- --suite e2e",
-        "e2e:edge": "npm run clean && npm run wdio:edge -- --suite e2e",
-        "negative:chrome": "npm run clean && npm run wdio -- --suite negative",
-        "negative:edge": "npm run clean && npm run wdio -- --suite negative",
-        "run:github": "npm run clean && npm run wdio-headless -- --suite e2e && npm run wdio-headless -- --suite negative",
+        "e2e:chrome": "npm run clean && npx cross-env ENV=chrome npm run wdio -- --suite e2e",
+        "e2e:edge": "npm run clean &&  npx cross-env ENV=edge npm run wdio -- --suite e2e",
+        "negative:chrome": "npm run clean &&  npx cross-env ENV=chrome npm run wdio -- --suite negative --logLevel warn",
+        "negative:edge": "npm run clean &&  npx cross-env ENV=edge npm run wdio -- --suite negative",
+        "run:github": "npm run clean && npx cross-env ENV=chrome npm run wdio-headless -- --suite e2e && npx cross-env ENV=chrome npm run wdio-headless -- --suite negative",
         "clean": "rimraf allure-report && rimraf allure-results && rimraf screenshots/failed-tests/*",
         "wdio": "wdio run wdio.conf.js",
-        "wdio:edge": "wdio run wdio-Edge.conf.js",
         "wdio-headless": "wdio run wdio-github.conf.js"
     },
     "keywords": [
@@ -32,6 +30,8 @@
         "chromedriver": "^105.0.0",
         "rimraf": "^3.0.2",
         "wdio-chromedriver-service": "^7.3.2",
-        "wdio-edgedriver-service": "^1.2.0"
+        "wdio-edgedriver-service": "^1.2.0",
+        "wdio-geckodriver-service": "^3.0.4",
+        "cross-env": "^7.0.3"
     }
 }

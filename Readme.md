@@ -14,7 +14,7 @@
 ## Job done:
 
 1.  Page Object model implemented
-2.  Chrome and MSEdge separate tests
+2.  Chrome, MSEdge, Firefox tests via ENV variable
 3.  Test suite e2e
 4.  Allure reporter
 5.  Screenshot with timestamp on failure
@@ -30,9 +30,9 @@
 
 ## To run tests:
 
-- To run both test suites: npm test
 - To run e2e test suite with Crome browser: npm run e2e:chrome
 - To run e2e test suite with Microsoft Edge browser: npm run e2e:edge
 - To run negative test suite with Chrome browser: npm run negative:chrome
 - To run negative test suite with Microsoft Edge browser: npm run negative:edge
 - To run e2e and negative suites with Chrome browser: npm run run:github
+- To run freestyle - please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative)"'
