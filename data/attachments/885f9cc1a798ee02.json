@@ -1,5 +1,0 @@
-{
-  "error": "no such element",
-  "message": "no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//div[text()=\"Intern\"]/ancestor:: div[@class=\"oxd-table-row oxd-table-row--with-border\"]\"}\n  (Session info: headless chrome=105.0.5195.102)",
-  "stacktrace": "#0 0x55e0b6afc693 <unknown>\n#1 0x55e0b68f5b0a <unknown>\n#2 0x55e0b692e5f7 <unknown>\n#3 0x55e0b692e7c1 <unknown>\n#4 0x55e0b6961804 <unknown>\n#5 0x55e0b694b94d <unknown>\n#6 0x55e0b695f4b0 <unknown>\n#7 0x55e0b694b743 <unknown>\n#8 0x55e0b6921533 <unknown>\n#9 0x55e0b6922715 <unknown>\n#10 0x55e0b6b4c7bd <unknown>\n#11 0x55e0b6b4fbf9 <unknown>\n#12 0x55e0b6b31f2e <unknown>\n#13 0x55e0b6b509b3 <unknown>\n#14 0x55e0b6b25e4f <unknown>\n#15 0x55e0b6b6fea8 <unknown>\n#16 0x55e0b6b70052 <unknown>\n#17 0x55e0b6b8a71f <unknown>\n#18 0x7fbac687b609 <unknown>\n"
-}

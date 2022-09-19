@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//div[text()=\"Intern\"]/ancestor:: div[@class=\"oxd-table-row oxd-table-row--with-border\"]"
-}
