@@ -29,7 +29,6 @@ module.exports = {
     'block-spacing': 'error',
     'brace-style': 'error',
     'func-call-spacing': ['error', 'never'],
-    'max-len': ['error', {code: 150, ignoreComments: true}],
     'new-cap': ['error', {newIsCap: true}],
     'new-parens': 'error',
     'no-nested-ternary': 'error',

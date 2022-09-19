@@ -27,6 +27,9 @@ class JobPage extends BasePage{
     get errorMessage () {
         return $('.oxd-input-field-error-message')
     }
+    get tableHeader () {
+        return $('span*=Records Found')
+    }
     get gridList () {
         return $$('.oxd-table-card')
     }
@@ -53,6 +56,9 @@ class JobPage extends BasePage{
     }
     get modifyBtn () {
         return this.gridParentEl.$(`.oxd-icon.bi-pencil-fill`)
+    }
+    get deleteBtn () {
+        return this.gridParentEl.$(`.oxd-icon.bi-trash`)
     }
     get newCheckbox () {
         return this.newGridParentEl.$(`span`)

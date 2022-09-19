@@ -1,9 +1,12 @@
 const allure = require('allure-commandline');
 const brows = require('./utils/browsers.js')
 const ENV = process.env.ENV
+let caps;
 if(!ENV || !['chrome', 'edge', 'firefox'].includes(ENV)){
-    console.log('Please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative)"')
-    process.exit()
+    console.log('Starting Chrome. For other browser - please add ENV and run with\n "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative)"')
+    caps = brows['chrome']
+} else {
+    caps = brows[process.env.ENV]
 }
 
 exports.config = {
@@ -13,15 +16,16 @@ exports.config = {
     ],
     suites: {
         e2e: ['./test/*.e2e.js'],
-        negative: ['./test/*.negative.js']
+        negative: ['./test/*.negative.js'],
+        smoke: ['./test/*.smoke.js']
     },
     maxInstances: 2,
     
-    capabilities: [brows[process.env.ENV]],
+    capabilities: [caps],
     
     logLevel: 'info',
     
-    bail: 1,
+    bail: 3,
     
     baseUrl: 'https://opensource-demo.orangehrmlive.com/',
     
@@ -33,11 +37,11 @@ exports.config = {
     services: ['selenium-standalone'],
     
     framework: 'mocha',
-    specFileRetries: 2,
+    // specFileRetries: 2,
     reporters: ['spec', 
     ['allure', {
         outputDir: 'allure-results',
-        disableWebdriverStepsReporting: false,
+        disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: false,
     }],
     ],  

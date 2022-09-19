@@ -18,7 +18,7 @@
 3.  Test suite e2e
 4.  Allure reporter
 5.  Screenshot with timestamp on failure
-6.  Separate config files for Microsoft Edge browser tests run and to run in headless mode
+6.  Separate config file to run in headless mode
 7.  Custom commands in wdio.conf.js file
 8.  Chai expect assertion
 9.  Jenkinsfile (e2e and negative suites run with Chrome browser and artefacts saved)
@@ -26,7 +26,8 @@
 11. Allure report publish on gh-pages
 
 ## Extras
-#### Negative login test suite added
+#### Negative login test suite added (test factory for negative test data)
+#### Smoke test suite added (check the impossibility to create the same Job Title again)
 
 ## To run tests:
 
@@ -34,5 +35,7 @@
 - To run e2e test suite with Microsoft Edge browser: npm run e2e:edge
 - To run negative test suite with Chrome browser: npm run negative:chrome
 - To run negative test suite with Microsoft Edge browser: npm run negative:edge
-- To run e2e and negative suites with Chrome browser: npm run run:github
-- To run freestyle - please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative)"'
+- To run smoke test suite with Chrome browser: npm run smoke:chrome
+- To run smoke test suite with Microsoft Edge browser: npm run smoke:edge
+- To run e2e negative and smoke suites with Chrome browser: npm run run:github
+- To run freestyle - please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative | smoke)"

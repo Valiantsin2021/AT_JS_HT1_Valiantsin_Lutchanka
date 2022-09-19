@@ -2,9 +2,6 @@ const BasePage = require('./BasePage');
 
 class MainPage extends BasePage{
 
-    get menuList () {
-        return $('.oxd-main-menu');
-    }
     get sideMenu () {
         return $$('span.oxd-main-menu-item--name')
     }
