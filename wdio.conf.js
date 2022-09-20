@@ -3,7 +3,7 @@ const brows = require('./utils/browsers.js')
 const ENV = process.env.ENV
 let caps;
 if(!ENV || !['chrome', 'edge', 'firefox'].includes(ENV)){
-    console.log('Starting Chrome. For other browser - please add ENV and run with\n "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative)"')
+    console.log('Starting Chrome. For other browser - please add ENV and run with\n "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative | smoke)"')
     caps = brows['chrome']
 } else {
     caps = brows[process.env.ENV]
@@ -59,6 +59,17 @@ exports.config = {
         browser.addCommand('waitAndSetValue', async function (value) {
             await this.waitForDisplayed()
             await this.setValue(value)
+        }, true)
+        browser.addCommand('waitAndGetText', async function () {
+            await this.waitForDisplayed()
+            let text;
+            const tagName = await this.getTagName();
+            if(tagName === 'textarea' || tagName === 'input' || tagName === 'select') {
+                text = await this.getValue()
+            } else {
+                text = await this.getText()
+            }
+            return text
         }, true)
     },
     

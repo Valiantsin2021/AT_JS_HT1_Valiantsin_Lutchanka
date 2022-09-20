@@ -52,21 +52,19 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     });
     it(`Should check the Login Page header has text "${loginHeader}"`, async () => {
         console.info('Check the Login Page header');
-        const header = LoginPage.header;
-        await header.waitForDisplayed();
-        await expect(header).toHaveText(loginHeader);
+        const header = await LoginPage.header.waitAndGetText();
+        console.log(header)
+        expectChai(header).to.eq(loginHeader);
     })
     it(`Should check the Login Page login username input does not have any value`, async () => {
         console.info('Check the Login Page username input does not have any value');
-        const loginInput = LoginPage.loginInput;
-        await loginInput.waitForDisplayed();
-        await expect(loginInput).toHaveValue('');
+        const loginInput = await LoginPage.loginInput.waitAndGetText();
+        expectChai(loginInput).to.eq('');
     })
     it(`Should check the Login Page password input does not have any value`, async () => {
         console.info('Check the Login Page password input does not have any value');
-        const passInput = LoginPage.passInput;
-        await passInput.waitForDisplayed();
-        await expect(passInput).toHaveValue('');
+        const passInput = await LoginPage.passInput.waitAndGetText();
+        expectChai(passInput).to.eq('');
     })
     it(`Should login with valid credentials and check browser url contains "${mainUrl}"`, async () => { 
         console.info('Check Page title after login');
@@ -101,8 +99,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Main Page header has text "${mainHeader}"`, async () => {
         console.info('Check the Main Page header text');
-        const header = MainPage.header;
-        await expect(header).toHaveText(mainHeader);
+        const header = await MainPage.header.waitAndGetText();
+        expectChai(header).to.eq(mainHeader);
     })
     it('Should click Admin link on side menu page and check the page header is displayed', async () => {
         console.info('Check the Admin Page the page header is displayed');
@@ -112,8 +110,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Admin Page header is "${adminHeader}"`, async () => {
         console.info('Check the Admin Page the page header text')
-        const header = AdminPage.header;
-        await expect(header).toHaveText(adminHeader);
+        const header = await AdminPage.header.waitAndGetText();
+        expectChai(header).to.eq(adminHeader);
     })
     it(`Should check the Admin Page url contains "${adminUrl}"`, async () => {
         console.info('Check the Admin Page url');
@@ -157,8 +155,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Job Page header is "${jobHeader}"`, async () => {
         console.info('Check the Job Page header text');
-        const header = JobPage.header;
-        await expect(header).toHaveText(jobHeader);
+        const header = await JobPage.header.waitAndGetText();
+        expectChai(header).to.eq(jobHeader);
     })
     it(`Should check the Job Page table with Job Titles is displayed and get table size`, async () => {
         console.info('Check the Job Page table with Job Titles is displayed and get table size')
@@ -172,9 +170,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should click on the Add button and check Job Page header is "${jobHeaderAdd}"`, async () => {
         console.info('Click on the Add button and check Job Page header');
         await JobPage.clickAddBtn();
-        const header = JobPage.header;
-        await header.waitForDisplayed();
-        await expect(header).toHaveText(jobHeaderAdd);
+        const header = await JobPage.header.waitAndGetText();
+        expectChai(header).to.eq(jobHeaderAdd);
     })
     it(`Should check the Job Page url contains "${saveUrl}"`, async () => {
         console.info('Check the Job Page url');
@@ -187,14 +184,14 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Job Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
-        const jobTitleInput = JobPage.jobTitleInput;
-        await expect(jobTitleInput).toHaveValue('');
+        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        expectChai(jobTitleInput).to.eq('');
     })
     it(`Should input "${jobTitle}" and check the value of input field`, async () => {
         console.info('Check the Job Title input value after input');
         await JobPage.inputJobTitle(jobTitle);
-        const jobTitleInput = JobPage.jobTitleInput;
-        await expect(jobTitleInput).toHaveValue(jobTitle);
+        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        expectChai(jobTitleInput).to.eq(jobTitle);
     })
     it(`Should check the Job Description input is displayed`, async () => {
         console.info('Check the Job Description input is displayed');
@@ -208,14 +205,14 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Job Description input doesnt have any value`, async () => {
         console.info('Check the Job Description input doesnt have any value');
-        const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await expect(jobDescriptionInput).toHaveValue('');
+        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        expectChai(jobDescriptionInput).to.eq('');
     })
     it(`Should input "${jobDescription}" and check the value of input field`, async () => {
         console.info('Check the Job Description input value after input');
         await JobPage.inputJobDescription(jobDescription);
-        const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await expect(jobDescriptionInput).toHaveValue(jobDescription);
+        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        expectChai(jobDescriptionInput).to.eq(jobDescription);
     });
     it(`Should check the Job Page Job Note input is displayed`, async () => {
         console.info('Check the Job Page Job Note input is displayed');
@@ -229,14 +226,14 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Job Note input doesnt have any value`, async () => {
         console.info('Check the Job Note input doesnt have any value');
-        const noteInput = JobPage.noteInput;
-        await expect(noteInput).toHaveValue('');
+        const noteInput = await JobPage.noteInput.waitAndGetText();
+        expectChai(noteInput).to.eq('');
     })
     it(`Should input "${jobNote}" and check the value of input field`, async () => {
         console.info('Check the Job Note input value after input');
         await JobPage.inputNote(jobNote);
-        const noteInput = JobPage.noteInput;
-        await expect(noteInput).toHaveValue(jobNote);
+        const noteInput = await JobPage.noteInput.waitAndGetText();
+        expectChai(noteInput).to.eq(jobNote);
     });
     it(`Should check the Save button is displayed`, async () => {
         console.info('Check the Save button is displayed');
@@ -267,13 +264,13 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     });
     it(`Should check the Job Page table includes Job Title with text "${jobTitle}"`, async () => {
         console.info('Check created Job Title text');
-        createdTitle = JobPage.gridTitle;
-        expectChai(await createdTitle.getText()).to.eq(jobTitle)
+        createdTitle = await JobPage.gridTitle.waitAndGetText();
+        expectChai(createdTitle).to.eq(jobTitle)
     });
     it(`Should check the Job Page table includes Job Description with text "${jobDescription}"`, async () => {
         console.info('Check the created Job Description text');
-        createdDescription = JobPage.gridDescription;
-        expectChai(await createdDescription.getText()).to.eq(jobDescription)
+        createdDescription = await JobPage.gridDescription.waitAndGetText();
+        expectChai(createdDescription).to.eq(jobDescription)
     });
     it('Should check the Job Page table size is increased by 1 after the creation of Job Title', async () => {
         console.info('Check the Job Page table size is increased by 1 after the creation of Job Title');
@@ -296,8 +293,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Jobe Page header is "${jobHeaderEdit}"`, async () => {
         console.info('Check the Jobe Page header text');
-        const header = JobPage.header;
-        await expect(header).toHaveText(jobHeaderEdit);
+        const header = await JobPage.header.waitAndGetText();
+        expectChai(header).to.eq(jobHeaderEdit);
     })
     it(`Should check the Jobe Title input is displayed`, async () => {
         console.info('Check the Jobe Title input is displayed');
@@ -313,8 +310,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the Jobe Title input value after input');
         await JobPage.clearInputValue(JobPage.jobTitleInput);
         await JobPage.inputJobTitle(newJobTitle);
-        const jobTitleInput = JobPage.jobTitleInput;
-        await expect(jobTitleInput).toHaveValue(newJobTitle);
+        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        expectChai(jobTitleInput).to.eq(newJobTitle);
     })
     it(`Should check the Jobe Description input is displayed`, async () => {
         console.info('Check the Jobe Description input is displayed');
@@ -323,15 +320,15 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Job Description input contains "${jobDescription}"`, async () => {
         console.info('Check the Jobe description input value before input');
-        const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await expect(jobDescriptionInput).toHaveValue(jobDescription);
+        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        expectChai(jobDescriptionInput).to.eq(jobDescription);
     })
     it(`Should clear the Job Description input, add new Job Descripton value "${newJobDescription}" and check the input contains "${newJobDescription}"`, async () => {
         console.info('Check the Jobe Description input value after input');
         await JobPage.clearInputValue(JobPage.jobDescriptionInput);
         await JobPage.inputJobDescription(newJobDescription);
-        const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await expect(jobDescriptionInput).toHaveValue(newJobDescription);
+        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        expectChai(jobDescriptionInput).to.eq(newJobDescription);
     })
     it('Should click on the Save button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed after save the Job Title');
@@ -346,14 +343,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the Job Page table has modified Job Title with text');
         await JobPage.tableHeader.waitForDisplayed();
         const modifiedJobTitle = JobPage.newGridTitle[0];
-        // await modifiedJobTitle.waitForDisplayed();
         expectChai(await modifiedJobTitle.getText()).to.eq(newJobTitle);
     })
     it(`Should check the Job Page table has modified Job Description with text equal to "${newJobDescription}"`, async () => {
         console.info('Check the Job Page table has modified Job Description with text');
-        const modifiedGridDescription = JobPage.newGridDescription;
-        await modifiedGridDescription.waitForDisplayed();
-        expectChai(await modifiedGridDescription.getText()).to.eq(newJobDescription);
+        const modifiedGridDescription = await JobPage.newGridDescription.waitAndGetText();
+        expectChai(modifiedGridDescription).to.eq(newJobDescription);
     })
     it('Should select the modifyed Job Title checkbox, click on Delete button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed after delete of Job Title');
@@ -373,7 +368,6 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         await JobPage.tableHeader.waitForDisplayed()
         expectChai(await JobPage.getGridSize()).to.eq(baseGrid);
     })
-
     it(`Should check the logout dropdown menu number of elements is equal to ${logoutMenuLength}`, async () => {
         console.info('Check the logout dropdown menu number of elements');
         await JobPage.logoutMenu.waitAndClick();

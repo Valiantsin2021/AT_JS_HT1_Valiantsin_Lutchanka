@@ -10,7 +10,7 @@
         "negative:edge": "npm run clean && npx cross-env ENV=edge npm run wdio -- --suite negative",
         "smoke:chrome": "npm run clean && npx cross-env ENV=chrome npm run wdio -- --suite smoke",
         "smoke:edge": "npm run clean && npx cross-env ENV=edge npm run wdio -- --suite smoke",
-        "run:github": "npm run clean && npm run wdio-headless -- --suite e2e && npm run wdio-headless -- --suite negative && npm run wdio-headless -- --suite smoke",
+        "run:github": "npm run clean && npm run wdio-headless -- --suite smoke && npm run wdio-headless -- --suite negative && npm run wdio-headless -- --suite e2e",
         "clean": "rimraf allure-report && rimraf allure-results && rimraf screenshots/failed-tests/*",
         "wdio": "wdio run wdio.conf.js",
         "wdio-headless": "wdio run wdio-github.conf.js"

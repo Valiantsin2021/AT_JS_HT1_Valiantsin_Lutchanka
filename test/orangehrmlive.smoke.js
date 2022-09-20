@@ -22,39 +22,36 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
     })
     it(`Should check the Job Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
-        const jobTitleInput = JobPage.jobTitleInput;
-        await jobTitleInput.waitForDisplayed();
-        await expect(jobTitleInput).toHaveValue('');
+        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        expectChai(jobTitleInput).to.eq('');
     })
     it(`Should input "${jobTitle}" and check the value of input field`, async () => {
         console.info('Check the Job Title input value after input');
         await JobPage.inputJobTitle(jobTitle);
-        const jobTitleInput = JobPage.jobTitleInput;
-        await expect(jobTitleInput).toHaveValue(jobTitle);
+        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        expectChai(jobTitleInput).to.eq(jobTitle);
     })
     it(`Should check the Job Description input doesnt have any value`, async () => {
         console.info('Check the Job Description input doesnt have any value');
-        const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await jobDescriptionInput.waitForDisplayed();
-        await expect(jobDescriptionInput).toHaveValue('');
+        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        expectChai(jobDescriptionInput).to.eq('');
     })
     it(`Should input "${jobDescription}" and check the value of input field`, async () => {
         console.info('Check the Job Description input value after input');
         await JobPage.inputJobDescription(jobDescription);
-        const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await expect(jobDescriptionInput).toHaveValue(jobDescription);
+        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        expectChai(jobDescriptionInput).to.eq(jobDescription);
     });
     it(`Should check the Job Note input doesnt have any value`, async () => {
         console.info('Check the Job Note input doesnt have any value');
-        const noteInput = JobPage.noteInput;
-        await noteInput.waitForDisplayed();
-        await expect(noteInput).toHaveValue('');
+        const noteInput = await JobPage.noteInput.waitAndGetText();
+        expectChai(noteInput).to.eq('');
     })
     it(`Should input "${jobNote}" and check the value of input field`, async () => {
         console.info('Check the Job Note input value after input');
         await JobPage.inputNote(jobNote);
-        const noteInput = JobPage.noteInput;
-        await expect(noteInput).toHaveValue(jobNote);
+        const noteInput = await JobPage.noteInput.waitAndGetText();
+        expectChai(noteInput).to.eq(jobNote);
     });
     it('Should click on the Save button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed');
@@ -64,15 +61,13 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
     });
     it(`Should check the Job Page table includes Job Title with text "${jobTitle}"`, async () => {
         console.info('Check created Job Title text');
-        const createdTitle = JobPage.gridTitle;
-        await createdTitle.waitForDisplayed();
-        expectChai(await createdTitle.getText()).to.eq(jobTitle)
+        const createdTitle = await JobPage.gridTitle.waitAndGetText();
+        expectChai(createdTitle).to.eq(jobTitle)
     });
     it(`Should check the Job Page table includes Job Description with text "${jobDescription}"`, async () => {
         console.info('Check the created Job Description text');
-        const createdDescription = JobPage.gridDescription;
-        await createdDescription.waitForDisplayed();
-        expectChai(await createdDescription.getText()).to.eq(jobDescription)
+        const createdDescription = await JobPage.gridDescription.waitAndGetText();
+        expectChai(createdDescription).to.eq(jobDescription)
     });
 
     // Check the impossibility to create the same Job Title again
@@ -80,9 +75,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
     it(`Should click on the Add button and check Job Page header is "${jobHeaderAdd}"`, async () => {
         console.info('Click on the Add button and check Job Page header');
         await JobPage.clickAddBtn();
-        const header = JobPage.header;
-        await header.waitForDisplayed();
-        await expect(header).toHaveText(jobHeaderAdd);
+        const header = await JobPage.header.waitAndGetText();
+        expectChai(header).to.eq(jobHeaderAdd);
     })
     it(`Should check the Job Page url contains "${saveUrl}"`, async () => {
         console.info('Check the Job Page url');
@@ -90,9 +84,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
     })
     it(`Should check the Job Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
-        const jobTitleInput = JobPage.jobTitleInput;
-        await jobTitleInput.waitForDisplayed();
-        await expect(jobTitleInput).toHaveValue('');
+        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        expectChai(jobTitleInput).to.eq('');
     })
     it('Should input the same Job Title again click on Save button and check the error message displayed', async () => {
         console.info('Check the error message displayed');
@@ -100,12 +93,11 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         await JobPage.clickSave();
         const error = JobPage.errorMessage;
         await expect(error).toBeDisplayed();
-        expectChai(await error.getText()).to.be.equal(errorMsg);
     })
     it(`Should check the error message text is "${errorMsg}"`, async () => {
         console.info('Check the error message text');
-        const error = JobPage.errorMessage;
-        expectChai(await error.getText()).to.be.equal(errorMsg);
+        const error = await JobPage.errorMessage.waitAndGetText();
+        expectChai(error).to.be.equal(errorMsg);
         await browser.back();
     })
     it(`Should delete created Job Title`, async () => {
@@ -120,8 +112,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         console.info('Check the page header')
         await JobPage.logoutMenu.waitAndClick();
         await JobPage.logout();
-        const header = LoginPage.header;
-        await header.waitForDisplayed();
-        await expect(header).toHaveText(loginHeader);
+        const header = await LoginPage.header.waitAndGetText();
+        expectChai(header).to.eq(loginHeader);
     })
 })

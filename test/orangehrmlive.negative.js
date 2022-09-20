@@ -20,7 +20,7 @@ describe(`Should open ${baseUrl} and check impossibility to login with invalid o
         })
     }
     for(let el of negativePass) {
-        it(`Should check the impossibility to login with valid username and valid password equal to "${el}"`, async () => {
+        it(`Should check the impossibility to login with valid username and invalid password equal to "${el}"`, async () => {
             await LoginPage.login(el, pass);
             await expect(LoginPage.invalidAlert).toBeDisplayed();
         })

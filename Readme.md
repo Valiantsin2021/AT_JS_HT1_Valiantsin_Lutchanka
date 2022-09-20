@@ -37,5 +37,6 @@
 - To run negative test suite with Microsoft Edge browser: npm run negative:edge
 - To run smoke test suite with Chrome browser: npm run smoke:chrome
 - To run smoke test suite with Microsoft Edge browser: npm run smoke:edge
-- To run e2e negative and smoke suites with Chrome browser: npm run run:github
+- To run e2e, negative and smoke suites with Chrome browser headless mode: npm run run:github
 - To run freestyle - please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative | smoke)"
+- To clean reports directory and screenshots: npm run clean
