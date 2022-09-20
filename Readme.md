@@ -1,6 +1,9 @@
 # End to end test for https://opensource-demo.orangehrmlive.com/ in learning purposes
+# JS automation tests using WebdriverIO
 
-## The test purpose is to perform the following assertions:
+## This repository purpose is to functional test automation of [Orange hrm project] https://opensource-demo.orangehrmlive.com/
+
+## The test suites purpose is to perform the following assertions:
 
 ##### 1. login to the page with valid credentials, add new Job Title 'Intern' (go to Admin -> Job - Job Titles -> Click on the Add button), add Job Description: free text up to 20 chars, add note, save changes.
 ##### 2. Check newly added title is visible on the grid
@@ -29,7 +32,11 @@
 #### Negative login test suite added (test factory for negative test data)
 #### Smoke test suite added (check the impossibility to create the same Job Title again)
 
-## To run tests:
+## Setup:
+
+1. Clone this repository
+2. Install dependencies with "npm install"
+3. To run tests - open terminal and navigate to the path of the cloned project and:
 
 - To run e2e test suite with Crome browser: npm run e2e:chrome
 - To run e2e test suite with Microsoft Edge browser: npm run e2e:edge

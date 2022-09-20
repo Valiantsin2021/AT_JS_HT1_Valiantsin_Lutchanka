@@ -9,23 +9,8 @@ class JobPage extends BasePage{
     get addBtn () {
         return $('.oxd-button')
     }
-    get jobTitleInput () {
-        return $('div.oxd-input-field-bottom-space :nth-child(2) input.oxd-input')
-    }
-    get jobDescriptionInput () {
-        return $('[placeholder="Type description here"]')
-    }
-    get noteInput () {
-        return $('[placeholder="Add note"]')
-    }
-    get saveBtn () {
-        return $('button[type="submit"]')
-    }
     get successModal () {
         return $('div.oxd-toast-content--success')
-    }
-    get errorMessage () {
-        return $('.oxd-input-field-error-message')
     }
     get tableHeader () {
         return $('span*=Records Found')
@@ -51,6 +36,9 @@ class JobPage extends BasePage{
     get newGridParentEl () {
         return $(`//div[text()="${newJobTitle}"]/ancestor:: div[@class="oxd-table-row oxd-table-row--with-border"]`)
     }
+    get successModal () {
+        return $('div.oxd-toast-content--success')
+    }
     get checkbox () {
         return this.gridParentEl.$(`span`)
     }
@@ -66,9 +54,6 @@ class JobPage extends BasePage{
     get newDeleteBtn () {
         return this.newGridParentEl.$(`.oxd-icon.bi-trash`)
     }
-    get modalDeleteBtn () {
-        return $('.orangehrm-modal-footer .oxd-button--label-danger')
-    }
     get logoutMenu () {
         return $('.oxd-userdropdown-icon')
     }
@@ -77,18 +62,6 @@ class JobPage extends BasePage{
     }
     async clickAddBtn () {
         await this.addBtn.waitAndClick();
-    }
-    async inputJobTitle (jobTitle) {
-        await this.jobTitleInput.waitAndSetValue(jobTitle);
-    }
-    async inputJobDescription (jobDescription) {
-        await this.jobDescriptionInput.waitAndSetValue(jobDescription);
-    }
-    async inputNote (jobNote) {
-        await this.noteInput.waitAndSetValue(jobNote);
-    }
-    async clickSave () {
-        await this.saveBtn.waitAndClick();
     }
     async getGridSize () {
         let length = Promise.resolve(await this.gridList.length);
@@ -102,16 +75,6 @@ class JobPage extends BasePage{
     }
     async deleteJobTitle (deleteBtn) {
         await deleteBtn.waitAndClick();
-    }
-    async clickModalDelete () {
-        await this.modalDeleteBtn.waitAndClick();
-    }
-    async clearInputValue(input) {
-        const inputField = await input;
-        await inputField.click();
-        await browser.execute((a) => {
-            a.value = null
-        }, inputField);
     }
     async logout () {
         this.logoutDropdown[3].waitAndClick();

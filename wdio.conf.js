@@ -23,7 +23,7 @@ exports.config = {
     
     capabilities: [caps],
     
-    logLevel: 'info',
+    logLevel: 'warn',
     
     bail: 3,
     

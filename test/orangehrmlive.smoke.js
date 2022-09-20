@@ -1,4 +1,6 @@
+const AddTitlePage = require('../pageobjects/AddTitlePage');
 const AdminPage = require('../pageobjects/AdminPage');
+const DeleteModal = require('../pageobjects/modals/DeleteModal');
 const JobPage = require('../pageobjects/JobPage');
 const LoginPage = require('../pageobjects/LoginPage');
 const MainPage = require('../pageobjects/MainPage');
@@ -20,43 +22,48 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         await JobPage.clickAddBtn();
         expect(browser).toHaveUrlContaining(saveUrl, { message: 'Url does not match!'});
     })
+    it(`Should check the Add Title Page header text is "${jobHeaderAdd}"`, async () => {
+        console.info('Check the Add Title Page header text');
+        const header = await AddTitlePage.header.waitAndGetText();
+        expectChai(header).to.eq(jobHeaderAdd);
+    })
     it(`Should check the Job Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
-        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        const jobTitleInput = await AddTitlePage.jobTitleInput.waitAndGetText();
         expectChai(jobTitleInput).to.eq('');
     })
     it(`Should input "${jobTitle}" and check the value of input field`, async () => {
         console.info('Check the Job Title input value after input');
-        await JobPage.inputJobTitle(jobTitle);
-        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        await AddTitlePage.inputJobTitle(jobTitle);
+        const jobTitleInput = await AddTitlePage.jobTitleInput.waitAndGetText();
         expectChai(jobTitleInput).to.eq(jobTitle);
     })
     it(`Should check the Job Description input doesnt have any value`, async () => {
         console.info('Check the Job Description input doesnt have any value');
-        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        const jobDescriptionInput = await AddTitlePage.jobDescriptionInput.waitAndGetText();
         expectChai(jobDescriptionInput).to.eq('');
     })
     it(`Should input "${jobDescription}" and check the value of input field`, async () => {
         console.info('Check the Job Description input value after input');
-        await JobPage.inputJobDescription(jobDescription);
-        const jobDescriptionInput = await JobPage.jobDescriptionInput.waitAndGetText();
+        await AddTitlePage.inputJobDescription(jobDescription);
+        const jobDescriptionInput = await AddTitlePage.jobDescriptionInput.waitAndGetText();
         expectChai(jobDescriptionInput).to.eq(jobDescription);
     });
     it(`Should check the Job Note input doesnt have any value`, async () => {
         console.info('Check the Job Note input doesnt have any value');
-        const noteInput = await JobPage.noteInput.waitAndGetText();
+        const noteInput = await AddTitlePage.noteInput.waitAndGetText();
         expectChai(noteInput).to.eq('');
     })
     it(`Should input "${jobNote}" and check the value of input field`, async () => {
         console.info('Check the Job Note input value after input');
-        await JobPage.inputNote(jobNote);
-        const noteInput = await JobPage.noteInput.waitAndGetText();
+        await AddTitlePage.inputNote(jobNote);
+        const noteInput = await AddTitlePage.noteInput.waitAndGetText();
         expectChai(noteInput).to.eq(jobNote);
     });
     it('Should click on the Save button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed');
-        await JobPage.clickSave();
-        const success = JobPage.successModal
+        await AddTitlePage.clickSave();
+        const success = AddTitlePage.successModal
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     });
     it(`Should check the Job Page table includes Job Title with text "${jobTitle}"`, async () => {
@@ -72,31 +79,31 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
 
     // Check the impossibility to create the same Job Title again
 
-    it(`Should click on the Add button and check Job Page header is "${jobHeaderAdd}"`, async () => {
-        console.info('Click on the Add button and check Job Page header');
+    it(`Should click on the Add button and check Add Title Page header is "${jobHeaderAdd}"`, async () => {
+        console.info('Click on the Add button and check Add Title Page header');
         await JobPage.clickAddBtn();
-        const header = await JobPage.header.waitAndGetText();
+        const header = await AddTitlePage.header.waitAndGetText();
         expectChai(header).to.eq(jobHeaderAdd);
     })
-    it(`Should check the Job Page url contains "${saveUrl}"`, async () => {
+    it(`Should check the Add Title Page url contains "${saveUrl}"`, async () => {
         console.info('Check the Job Page url');
         expect(browser).toHaveUrlContaining(saveUrl, { message: 'Url does not match!'});
     })
-    it(`Should check the Job Title input doesnt have any value`, async () => {
+    it(`Should check the Add Title Page Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
-        const jobTitleInput = await JobPage.jobTitleInput.waitAndGetText();
+        const jobTitleInput = await AddTitlePage.jobTitleInput.waitAndGetText();
         expectChai(jobTitleInput).to.eq('');
     })
-    it('Should input the same Job Title again click on Save button and check the error message displayed', async () => {
-        console.info('Check the error message displayed');
-        await JobPage.inputJobTitle(jobTitle);
-        await JobPage.clickSave();
-        const error = JobPage.errorMessage;
+    it('Should input the same Job Title again, click on Save button and check the error message displayed', async () => {
+        console.info('Check the error message is displayed');
+        await AddTitlePage.inputJobTitle(jobTitle);
+        await AddTitlePage.clickSave();
+        const error = AddTitlePage.errorMessage;
         await expect(error).toBeDisplayed({ message: 'Error message is not displayed!'});
     })
     it(`Should check the error message text is "${errorMsg}"`, async () => {
         console.info('Check the error message text');
-        const error = await JobPage.errorMessage.waitAndGetText();
+        const error = await AddTitlePage.errorMessage.waitAndGetText();
         expectChai(error).to.be.equal(errorMsg);
         await browser.back();
     })
@@ -104,12 +111,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         console.info('Check the success message displayed');
         await JobPage.markCheckbox(JobPage.checkbox);
         await JobPage.deleteJobTitle(JobPage.deleteBtn);
-        await JobPage.clickModalDelete();
+        await DeleteModal.clickModalDelete();
         const success = JobPage.successModal;
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
-    it(`Should click on logout button and check the page header`, async () => {
-        console.info('Check the page header')
+    it(`Should click on logout button and check the Login Page header`, async () => {
+        console.info('Check the Login Page header')
         await JobPage.logoutMenu.waitAndClick();
         await JobPage.logout();
         const header = await LoginPage.header.waitAndGetText();
