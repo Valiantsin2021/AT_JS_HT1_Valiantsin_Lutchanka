@@ -48,12 +48,11 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Open the Main page and check the Title');
         await LoginPage.maximize();
         await LoginPage.open();
-        expect(browser).toHaveTitle(title);
+        await expect(browser).toHaveTitle(title, { message: 'Title does not match!'});
     });
     it(`Should check the Login Page header has text "${loginHeader}"`, async () => {
         console.info('Check the Login Page header');
         const header = await LoginPage.header.waitAndGetText();
-        console.log(header)
         expectChai(header).to.eq(loginHeader);
     })
     it(`Should check the Login Page login username input does not have any value`, async () => {
@@ -69,17 +68,17 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should login with valid credentials and check browser url contains "${mainUrl}"`, async () => { 
         console.info('Check Page title after login');
         await LoginPage.login(login, pass);
-        expect(browser).toHaveUrlContaining(mainUrl);   
+        await expect(browser).toHaveUrlContaining(mainUrl, { message: 'Url does not match!'});   
     })
     it(`Should check the Main Page side menu is visible`, async () => {
         console.info('Check Main Page side menu is visible');
         const sideMenu = MainPage.sideMenu;
-        await expect(sideMenu).toBeDisplayed();
+        await expect(sideMenu).toBeDisplayed({ message: 'Side menu is not displayed!'});
     })
     it(`Should check the Main Page side menu number of elements is "${sideMenuElementsLength}"`, async () => {
         console.info('Check the Main Page side menu number of elements');
         const sideMenu = MainPage.sideMenu;
-        await expect(sideMenu).toBeElementsArrayOfSize(sideMenuElementsLength);
+        await expect(sideMenu).toBeElementsArrayOfSize(sideMenuElementsLength, { message: 'Side menu length does not match!'});
     })
     it(`Should check the Main Page side menu elements text`, async () => {
         console.info('Check the Main Page side menu elements have text');
@@ -90,12 +89,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the Main Page profile image element has attribute');
         const attr = MainPage.profileImg;
         await attr.waitForDisplayed();
-        await expect(attr).toHaveAttr('alt', profileImgAlt);
+        await expect(attr).toHaveAttr('alt', profileImgAlt, { message: 'Attribute value does not match!'});
     })
     it(`Should check the Main Page header is displayed`, async () => {
         console.info('Check the Main Page header is displayed');
         const header = MainPage.header;
-        await expect(header).toBeDisplayed();
+        await expect(header).toBeDisplayed({ message: 'Header is not displayed!'});
     })
     it(`Should check the Main Page header has text "${mainHeader}"`, async () => {
         console.info('Check the Main Page header text');
@@ -106,7 +105,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the Admin Page the page header is displayed');
         await MainPage.clickAdmin();
         const header = AdminPage.header;
-        await expect(header).toBeDisplayed();
+        await expect(header).toBeDisplayed({ message: 'Header is not displayed!'});
     })
     it(`Should check the Admin Page header is "${adminHeader}"`, async () => {
         console.info('Check the Admin Page the page header text')
@@ -115,17 +114,17 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Admin Page url contains "${adminUrl}"`, async () => {
         console.info('Check the Admin Page url');
-        expect(browser).toHaveUrlContaining(adminUrl);
+        expect(browser).toHaveUrlContaining(adminUrl, { message: 'Url does not match!'});
     })
     it(`Should check Admin Page top menu is displayed`, async () => {
         console.info('Check the Admin Page top menu is displayed');
         const topMenu = AdminPage.topMenu;
-        await expect(topMenu).toBeDisplayed();
+        await expect(topMenu).toBeDisplayed({ message: 'Top menu is not displayed!'});
     })
     it(`Should check the Admin Page top menu number of elements is "${topMenuLength}"`, async () => {
         console.info('Check the Admin Page top menu number of elements');
         const topMenu = AdminPage.topMenu;
-        await expect(topMenu).toBeElementsArrayOfSize(topMenuLength);
+        await expect(topMenu).toBeElementsArrayOfSize(topMenuLength, { message: 'Top menu length does not match!'});
     })
     it(`Should check the Admin Page top menu elements text`, async () => {
         console.info('Check the Admin Page top menu elements have text')
@@ -136,7 +135,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the number of elements in the dropdown menu of the Job link');
         await AdminPage.clickJob();
         const jobDropdown = AdminPage.jobTitlesDropdown;
-        await expect(jobDropdown).toBeElementsArrayOfSize(jobTitlesLength);
+        await expect(jobDropdown).toBeElementsArrayOfSize(jobTitlesLength, { message: 'Job dropdown menu length does not match!'});
     })
     it(`Should check the text of the elements in the dropdown menu of the Job link`, async () => {
         console.info('Check the elements in the dropdown menu of the Job link have text')
@@ -146,12 +145,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should click Job Titles link and check the Job Page url contains "${jobUrl}"`, async () => {
         console.info('Check the Job Page url');
         await AdminPage.clickJobTitles();
-        expect(browser).toHaveUrlContaining(jobUrl);
+        expect(browser).toHaveUrlContaining(jobUrl, { message: 'Url does not match!'});
     })
     it(`Should check the Job Page header is displayed`, async () => {
         console.info('Check the Job Page header is displayed');
         const header = JobPage.header;
-        await expect(header).toBeDisplayed();
+        await expect(header).toBeDisplayed({ message: 'Header is not displayed!'});
     })
     it(`Should check the Job Page header is "${jobHeader}"`, async () => {
         console.info('Check the Job Page header text');
@@ -161,7 +160,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should check the Job Page table with Job Titles is displayed and get table size`, async () => {
         console.info('Check the Job Page table with Job Titles is displayed and get table size')
         tableJobTitles = JobPage.gridList;
-        await expect(tableJobTitles).toBeDisplayed();
+        await expect(tableJobTitles).toBeDisplayed({ message: 'Job Table is not displayed!'});
         baseGrid = await JobPage.getGridSize();
     })
 
@@ -175,12 +174,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     })
     it(`Should check the Job Page url contains "${saveUrl}"`, async () => {
         console.info('Check the Job Page url');
-        expect(browser).toHaveUrlContaining(saveUrl);
+        expect(browser).toHaveUrlContaining(saveUrl, { message: 'Url does not match!'});
     })
     it(`Should check the Job Title input is displayed`, async () => {
         console.info('Check the Job Title input is displayed');
         const jobTitleInput = JobPage.jobTitleInput;
-        await expect(jobTitleInput).toBeDisplayed();
+        await expect(jobTitleInput).toBeDisplayed({ message: 'Job Title input is not displayed!'});
     })
     it(`Should check the Job Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
@@ -196,12 +195,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should check the Job Description input is displayed`, async () => {
         console.info('Check the Job Description input is displayed');
         const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await expect(jobDescriptionInput).toBeDisplayed();
+        await expect(jobDescriptionInput).toBeDisplayed({ message: 'Job Description input is not displayed!'});
     })
     it(`Should check Job Description input attribute placeholder value is "${descriptionPlaceholder}"`, async () => {
         console.info('Check the Job Description input has placeholder value');
         const jobDescriptionInput = JobPage.jobDescriptionInput
-        await expect(jobDescriptionInput).toHaveAttr('placeholder', descriptionPlaceholder);
+        await expect(jobDescriptionInput).toHaveAttr('placeholder', descriptionPlaceholder, { message: 'Placeholder value does not match!'});
     })
     it(`Should check the Job Description input doesnt have any value`, async () => {
         console.info('Check the Job Description input doesnt have any value');
@@ -217,12 +216,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should check the Job Page Job Note input is displayed`, async () => {
         console.info('Check the Job Page Job Note input is displayed');
         const noteInput = JobPage.noteInput;
-        await expect(noteInput).toBeDisplayed();
+        await expect(noteInput).toBeDisplayed({ message: 'Job Note input is not displayed!'});
     })
     it(`Should check Job Note input attribute placeholder value is "${notePlaceholder}"`, async () => {
         console.info('Check the Job Note input attribute placeholder value');
         const noteInput = JobPage.noteInput;
-        await expect(noteInput).toHaveAttr('placeholder', notePlaceholder);
+        await expect(noteInput).toHaveAttr('placeholder', notePlaceholder, { message: 'Placeholder value does not match!'});
     })
     it(`Should check the Job Note input doesnt have any value`, async () => {
         console.info('Check the Job Note input doesnt have any value');
@@ -238,29 +237,29 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should check the Save button is displayed`, async () => {
         console.info('Check the Save button is displayed');
         const saveBtn = JobPage.saveBtn
-        await expect(saveBtn).toBeDisplayed();
+        await expect(saveBtn).toBeDisplayed({ message: 'Save button is not displayed!'});
     });
     it(`Should check the Save button has attribute class containing "${saveBtnClass}"`, async () => {
         console.info('Check the Save button has attribute class containing value');
         const saveBtn = JobPage.saveBtn
-        await expect(saveBtn).toHaveAttributeContaining('class', saveBtnClass);
+        await expect(saveBtn).toHaveAttributeContaining('class', saveBtnClass, { message: 'Class value does not match!'});
     });
     it('Should click on the Save button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed');
         await JobPage.clickSave();
         const success = JobPage.successModal
-        await expect(success).toBeDisplayed();
+        await expect(success).toBeDisplayed({ message: 'Success modal is not displayed!'});
     });
     it(`Should check the Job Page table has the created Job Title "${jobTitle}" displayed`, async () => {
         console.info('Check the Job Page table has created Job Title displayed');
         await JobPage.tableHeader.waitForDisplayed()
         createdTitle = JobPage.gridTitle;
-        await expect(createdTitle).toBeDisplayed();
+        await expect(createdTitle).toBeDisplayed({ message: 'Created Job Title is not displayed!'});
     });
     it(`Should check the Job Page table has the created Job Description "${jobDescription}" displayed`, async () => {
         console.info('Check the Job Page table has created Job Description displayed');
         createdDescription = JobPage.gridDescription;
-        await expect(createdDescription).toBeDisplayed();
+        await expect(createdDescription).toBeDisplayed({ message: 'Created Job Description is not displayed!'});
     });
     it(`Should check the Job Page table includes Job Title with text "${jobTitle}"`, async () => {
         console.info('Check created Job Title text');
@@ -283,13 +282,13 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should check if the checkbox of the created Job Title is displayed`, async () => {
         console.info('Check the checkbox of created Job Title is displayed');
         const checkbox = JobPage.checkbox;
-        await expect(checkbox).toBeDisplayed();
+        await expect(checkbox).toBeDisplayed({ message: 'Checkbox is not displayed!'});
     })
     it(`Should select the created Job Title checkbox, click on Modify button and check the Jobe Page url contains "${saveUrl}"`, async () => {
         console.info('Check the Jobe Page url');
         await JobPage.markCheckbox(JobPage.checkbox);
         await JobPage.clickModify(JobPage.modifyBtn);
-        expect(browser).toHaveUrlContaining(saveUrl);
+        await expect(browser).toHaveUrlContaining(saveUrl,{ message: 'Url does not match!'});
     })
     it(`Should check the Jobe Page header is "${jobHeaderEdit}"`, async () => {
         console.info('Check the Jobe Page header text');
@@ -299,12 +298,12 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should check the Jobe Title input is displayed`, async () => {
         console.info('Check the Jobe Title input is displayed');
         const jobTitleInput = JobPage.jobTitleInput;
-        await expect(jobTitleInput).toBeDisplayed();
+        await expect(jobTitleInput).toBeDisplayed({ message: 'Job Title input is not displayed!'});
     })
     it(`Should check the Job Title input contains "${jobTitle}"`, async () => {
         console.info('Check the Jobe Title input value before input');
         const jobTitleInput = JobPage.jobTitleInput;
-        await expect(jobTitleInput).toHaveValue(jobTitle);
+        await expect(jobTitleInput).toHaveValue(jobTitle, { message: 'Job Title input value does not match!'});
     })
     it(`Should clear the Job Title input, add new Job Title value "${newJobTitle}" and check the input contains "${newJobTitle}"`, async () => {
         console.info('Check the Jobe Title input value after input');
@@ -316,7 +315,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it(`Should check the Jobe Description input is displayed`, async () => {
         console.info('Check the Jobe Description input is displayed');
         const jobDescriptionInput = JobPage.jobDescriptionInput;
-        await expect(jobDescriptionInput).toBeDisplayed();
+        await expect(jobDescriptionInput).toBeDisplayed({ message: 'Job Description input is not displayed!'});
     })
     it(`Should check the Job Description input contains "${jobDescription}"`, async () => {
         console.info('Check the Jobe description input value before input');
@@ -334,7 +333,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the success message is displayed after save the Job Title');
         await JobPage.clickSave();
         const success = JobPage.successModal
-        await expect(success).toBeDisplayed();
+        await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
 
     // Check the changed Job Title is visible on the Job Title page
@@ -350,13 +349,16 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         const modifiedGridDescription = await JobPage.newGridDescription.waitAndGetText();
         expectChai(modifiedGridDescription).to.eq(newJobDescription);
     })
+
+// Should successfully delete modified Job Title
+
     it('Should select the modifyed Job Title checkbox, click on Delete button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed after delete of Job Title');
         await JobPage.markCheckbox(JobPage.newCheckbox);
         await JobPage.deleteJobTitle(JobPage.newDeleteBtn);
         await JobPage.clickModalDelete();
         const success = JobPage.successModal;
-        await expect(success).toBeDisplayed();
+        await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
     it('Should check the deleted Job Title field is not existing', async () => {
         console.info('Check the deleted Job Title field is not existing');
@@ -372,7 +374,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the logout dropdown menu number of elements');
         await JobPage.logoutMenu.waitAndClick();
         const logoutMenu = JobPage.logoutDropdown
-        await expect(logoutMenu).toBeElementsArrayOfSize(logoutMenuLength);
+        await expect(logoutMenu).toBeElementsArrayOfSize(logoutMenuLength, { message: 'Logout menu length does not match!'});
     })
     it(`Should check the logout dropdown menu elements text`, async () => {
         console.info('Check the elements in the dropdown menu of the Job link text')
@@ -383,6 +385,6 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         console.info('Check the page header')
         await JobPage.logout();
         const header = LoginPage.header
-        await expect(header).toHaveText(loginHeader);
+        await expect(header).toHaveText(loginHeader, { message: 'Login header is not displayed!'});
     })
 })

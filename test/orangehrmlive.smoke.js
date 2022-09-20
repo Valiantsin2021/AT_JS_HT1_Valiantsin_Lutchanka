@@ -18,7 +18,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         await AdminPage.clickJob();
         await AdminPage.clickJobTitles();
         await JobPage.clickAddBtn();
-        expect(browser).toHaveUrlContaining(saveUrl);
+        expect(browser).toHaveUrlContaining(saveUrl, { message: 'Url does not match!'});
     })
     it(`Should check the Job Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
@@ -57,7 +57,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         console.info('Check the success message is displayed');
         await JobPage.clickSave();
         const success = JobPage.successModal
-        await expect(success).toBeDisplayed();
+        await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     });
     it(`Should check the Job Page table includes Job Title with text "${jobTitle}"`, async () => {
         console.info('Check created Job Title text');
@@ -80,7 +80,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
     })
     it(`Should check the Job Page url contains "${saveUrl}"`, async () => {
         console.info('Check the Job Page url');
-        expect(browser).toHaveUrlContaining(saveUrl);
+        expect(browser).toHaveUrlContaining(saveUrl, { message: 'Url does not match!'});
     })
     it(`Should check the Job Title input doesnt have any value`, async () => {
         console.info('Check the Job Title input doesnt have any value');
@@ -92,7 +92,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         await JobPage.inputJobTitle(jobTitle);
         await JobPage.clickSave();
         const error = JobPage.errorMessage;
-        await expect(error).toBeDisplayed();
+        await expect(error).toBeDisplayed({ message: 'Error message is not displayed!'});
     })
     it(`Should check the error message text is "${errorMsg}"`, async () => {
         console.info('Check the error message text');
@@ -106,7 +106,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         await JobPage.deleteJobTitle(JobPage.deleteBtn);
         await JobPage.clickModalDelete();
         const success = JobPage.successModal;
-        await expect(success).toBeDisplayed();
+        await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
     it(`Should click on logout button and check the page header`, async () => {
         console.info('Check the page header')
