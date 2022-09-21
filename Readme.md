@@ -24,7 +24,7 @@
 6.  Separate config file to run in headless mode
 7.  Custom commands in wdio.conf.js file
 8.  Chai expect assertion
-9.  Jenkinsfile (e2e and negative suites run with Chrome browser and artefacts saved)
+9.  Jenkinsfile (e2e, negative and smoke suites run with Chrome browser and artefacts saved)
 10. Github Actions yml file (e2e and negative suites run with Chrome browser and artefacts saved)
 11. Allure report publish on gh-pages
 
