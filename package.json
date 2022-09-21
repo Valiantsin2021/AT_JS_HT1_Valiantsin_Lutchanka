@@ -4,6 +4,7 @@
     "description": "End to end + negative login test of https://opensource-demo.orangehrmlive.com/",
     "main": "index.js",
     "scripts": {
+        "test": "npm run wdio",
         "e2e:chrome": "npm run clean && npx cross-env ENV=chrome npm run wdio -- --suite e2e",
         "e2e:edge": "npm run clean && npx cross-env ENV=edge npm run wdio -- --suite e2e",
         "negative:chrome": "npm run clean && npx cross-env ENV=chrome npm run wdio -- --suite negative --logLevel warn",

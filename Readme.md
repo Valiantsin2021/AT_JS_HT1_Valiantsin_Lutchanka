@@ -37,6 +37,7 @@
 2. Install dependencies with "npm install"
 3. To run tests - open terminal and navigate to the path of the cloned project and:
 
+    - all test suites with Chrome browser: npm test
     - e2e test suite with Crome browser: npm run e2e:chrome
     - e2e test suite with Microsoft Edge browser: npm run e2e:edge
     - negative test suite with Chrome browser: npm run negative:chrome
