@@ -1,4 +1,3 @@
-# End to end test for https://opensource-demo.orangehrmlive.com/ in learning purposes
 # JS automation tests using WebdriverIO
 
 ## This repository purpose is to functional test automation of [Orange hrm project] https://opensource-demo.orangehrmlive.com/
@@ -38,12 +37,12 @@
 2. Install dependencies with "npm install"
 3. To run tests - open terminal and navigate to the path of the cloned project and:
 
-- To run e2e test suite with Crome browser: npm run e2e:chrome
-- To run e2e test suite with Microsoft Edge browser: npm run e2e:edge
-- To run negative test suite with Chrome browser: npm run negative:chrome
-- To run negative test suite with Microsoft Edge browser: npm run negative:edge
-- To run smoke test suite with Chrome browser: npm run smoke:chrome
-- To run smoke test suite with Microsoft Edge browser: npm run smoke:edge
-- To run e2e, negative and smoke suites with Chrome browser headless mode: npm run run:github
-- To run freestyle - please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative | smoke)"
-- To clean reports directory and screenshots: npm run clean
+    - e2e test suite with Crome browser: npm run e2e:chrome
+    - e2e test suite with Microsoft Edge browser: npm run e2e:edge
+    - negative test suite with Chrome browser: npm run negative:chrome
+    - negative test suite with Microsoft Edge browser: npm run negative:edge
+    - smoke test suite with Chrome browser: npm run smoke:chrome
+    - smoke test suite with Microsoft Edge browser: npm run smoke:edge
+    - e2e, negative and smoke suites with Chrome browser headless mode: npm run run:github
+    - choose browser and suite manually - please add ENV and run with "npm run clean && npx cross-env ENV=(chrome | edge | firefox) npm run wdio -- --suite (e2e | negative | smoke)"
+    - To clean reports directory and screenshots: npm run clean

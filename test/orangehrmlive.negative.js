@@ -1,5 +1,6 @@
 const LoginPage = require('../pageobjects/LoginPage');
-const { baseUrl, title, loginHeader, login, pass, negativeLogin, negativePass } = require('../utils/constants');
+const { baseUrl, title, loginHeader } = require('../utils/constants');
+const { login, pass, negativeLogin, negativePass } = require('../utils/credentials.js');
 
 describe(`Should open ${baseUrl} and check impossibility to login with invalid or blank credentials`, () => {
     beforeEach( async function () {

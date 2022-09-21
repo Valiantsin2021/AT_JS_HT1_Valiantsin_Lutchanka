@@ -6,6 +6,18 @@ const MainPage = require('../pageobjects/MainPage')
 const checkMenu = require('../utils/helper.js')
 let baseGrid;
 let changedGrid;
+const { login, pass } = require('../utils/credentials.js');
+const { 
+    sideMenuText, 
+    sideMenuElementsLength, 
+    topMenuText, 
+    topMenuLength, 
+    jobTitles, 
+    jobTitlesLength, 
+    logoutMenuText, 
+    logoutMenuLength, 
+    } = require('../utils/pageMenus.js')
+
 const { 
     baseUrl,
     mainUrl,
@@ -13,8 +25,6 @@ const {
     jobUrl,
     saveUrl,
     loginHeader, 
-    login, 
-    pass, 
     title, 
     profileImgAlt,
     mainHeader,
@@ -22,12 +32,6 @@ const {
     jobHeader,
     jobHeaderAdd,
     jobHeaderEdit,
-    sideMenuText,
-    sideMenuElementsLength, 
-    topMenuText,
-    topMenuLength, 
-    jobTitles,
-    jobTitlesLength,
     jobTitle,
     jobDescription,
     jobNote,
@@ -36,8 +40,6 @@ const {
     descriptionPlaceholder,
     notePlaceholder,
     saveBtnClass,
-    logoutMenuText,
-    logoutMenuLength,
     } = require('../utils/constants.js');
 const AddTitlePage = require('../pageobjects/AddTitlePage');
 const EditTitlePage = require('../pageobjects/EditTitlePage');

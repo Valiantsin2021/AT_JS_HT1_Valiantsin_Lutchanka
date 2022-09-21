@@ -5,7 +5,8 @@ const JobPage = require('../pageobjects/JobPage');
 const LoginPage = require('../pageobjects/LoginPage');
 const MainPage = require('../pageobjects/MainPage');
 const expectChai = require('chai').expect;
-const { baseUrl, login, pass, saveUrl, jobTitle, jobDescription, jobNote, jobHeaderAdd, errorMsg, loginHeader } = require('../utils/constants');
+const { baseUrl, saveUrl, jobTitle, jobDescription, jobNote, jobHeaderAdd, errorMsg, loginHeader } = require('../utils/constants');
+const { login, pass } = require('../utils/credentials.js');
 
 describe(`Should login to ${baseUrl}, succesfully create new job, try to create the same Job Title again and logout`, () => {
     before( async () => {
