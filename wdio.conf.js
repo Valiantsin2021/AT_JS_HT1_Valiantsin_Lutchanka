@@ -19,7 +19,7 @@ exports.config = {
         negative: ['./test/*.negative.js'],
         smoke: ['./test/*.smoke.js']
     },
-    maxInstances: 2,
+    maxInstances: 1,
     
     capabilities: [caps],
     
@@ -48,7 +48,7 @@ exports.config = {
 
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: process.env.DEBUG === 'true' ? 999999 : 60000
     },
     
     beforeSuite: function () {
