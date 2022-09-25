@@ -21,5 +21,5 @@ module.exports = {
     errorMsg: 'Already exists',
     newJobTitle: 'Student',
     newJobDescription: 'Practice testing',
-    success: 'Success'
+    successMsg: 'Success'
 }

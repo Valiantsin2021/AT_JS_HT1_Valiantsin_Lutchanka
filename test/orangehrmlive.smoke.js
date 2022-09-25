@@ -6,7 +6,7 @@ const JobPage = require('../pageobjects/JobPage');
 const LoginPage = require('../pageobjects/LoginPage');
 const MainPage = require('../pageobjects/MainPage');
 const expectChai = require('chai').expect;
-const { baseUrl, saveUrl, jobTitle, jobDescription, jobNote, jobHeaderAdd, errorMsg, loginHeader } = require('../utils/constants');
+const { baseUrl, saveUrl, jobTitle, jobDescription, jobNote, jobHeaderAdd, errorMsg, loginHeader, successMsg } = require('../utils/constants');
 const { login, pass } = require('../utils/credentials.js');
 
 describe(`Should login to ${baseUrl}, succesfully create new job, try to create the same Job Title again and logout`, () => {
@@ -68,6 +68,11 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         const success = SuccessModal.successModal
         await expect(success).toBeDisplayed({ message: 'Success modal is not displayed!'});
     });
+    it(`Should check the success message text is ${successMsg}`, async () => {
+        console.info(`Check the success message text is ${successMsg}`);
+        const success = SuccessModal.successText
+        await expect(success).toHaveText(successMsg, { message: 'Success text not correct'});
+    });
     it(`Should check the Job Page table includes Job Title with text "${jobTitle}"`, async () => {
         console.info('Check created Job Title text');
         const createdTitle = await JobPage.gridTitle.waitAndGetText();
@@ -117,6 +122,11 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         const success = SuccessModal.successModal;
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
+    it(`Should check the success message text is ${successMsg}`, async () => {
+        console.info(`Check the success message text is ${successMsg}`);
+        const success = SuccessModal.successText
+        await expect(success).toHaveText(successMsg, { message: 'Success text not correct'});
+    });
     it(`Should click on logout button and check the Login Page header`, async () => {
         console.info('Check the Login Page header')
         await JobPage.logoutMenu.waitAndClick();

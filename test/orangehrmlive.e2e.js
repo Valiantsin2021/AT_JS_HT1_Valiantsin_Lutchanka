@@ -40,6 +40,7 @@ const {
     descriptionPlaceholder,
     notePlaceholder,
     saveBtnClass,
+    successMsg
     } = require('../utils/constants.js');
 const AddTitlePage = require('../pageobjects/AddTitlePage');
 const EditTitlePage = require('../pageobjects/EditTitlePage');
@@ -260,6 +261,11 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         const success = SuccessModal.successModal
         await expect(success).toBeDisplayed({ message: 'Success modal is not displayed!'});
     });
+    it(`Should check the success message text is ${successMsg}`, async () => {
+        console.info(`Check the success message text is ${successMsg}`);
+        const success = SuccessModal.successText
+        await expect(success).toHaveText(successMsg, { message: 'Success text not correct'});
+    });
     it(`Should check the Job Page table has the created Job Title "${jobTitle}" displayed`, async () => {
         console.info('Check the Job Page table has created Job Title displayed');
         await JobPage.tableHeader.waitForDisplayed()
@@ -345,6 +351,11 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         const success = SuccessModal.successModal;
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
+    it(`Should check the success message text is ${successMsg}`, async () => {
+        console.info(`Check the success message text is ${successMsg}`);
+        const success = SuccessModal.successText
+        await expect(success).toHaveText(successMsg, { message: 'Success text not correct'});
+    });
 
     // Check the changed Job Title is visible on the Job Title page
 
@@ -370,6 +381,11 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         const success = SuccessModal.successModal;
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
+    it(`Should check the success message text is ${successMsg}`, async () => {
+        console.info(`Check the success message text is ${successMsg}`);
+        const success = SuccessModal.successText
+        await expect(success).toHaveText(successMsg, { message: 'Success text not correct'});
+    });
     it('Should check the deleted Job Title field is not existing', async () => {
         console.info('Check the deleted Job Title field is not existing');
         const deletedJobTitle = JobPage.newGridTitle[0];
