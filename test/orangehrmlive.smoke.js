@@ -1,6 +1,7 @@
 const AddTitlePage = require('../pageobjects/AddTitlePage');
 const AdminPage = require('../pageobjects/AdminPage');
 const DeleteModal = require('../pageobjects/modals/DeleteModal');
+const SuccessModal = require('../pageobjects/modals/SuccessModal');
 const JobPage = require('../pageobjects/JobPage');
 const LoginPage = require('../pageobjects/LoginPage');
 const MainPage = require('../pageobjects/MainPage');
@@ -64,8 +65,8 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
     it('Should click on the Save button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed');
         await AddTitlePage.clickSave();
-        const success = AddTitlePage.successModal
-        await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
+        const success = SuccessModal.successModal
+        await expect(success).toBeDisplayed({ message: 'Success modal is not displayed!'});
     });
     it(`Should check the Job Page table includes Job Title with text "${jobTitle}"`, async () => {
         console.info('Check created Job Title text');
@@ -113,7 +114,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, try to create 
         await JobPage.markCheckbox(JobPage.checkbox);
         await JobPage.deleteJobTitle(JobPage.deleteBtn);
         await DeleteModal.clickModalDelete();
-        const success = JobPage.successModal;
+        const success = SuccessModal.successModal;
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
     it(`Should click on logout button and check the Login Page header`, async () => {

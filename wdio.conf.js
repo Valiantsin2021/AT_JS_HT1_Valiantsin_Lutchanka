@@ -71,6 +71,10 @@ exports.config = {
             }
             return text
         }, true)
+        browser.addCommand('waitAndCheckValue', async function () {
+            await this.waitForDisplayed()
+            await expect(this).toHaveValue('')
+        }, true)
     },
     
     afterTest: async function (step, scenario, { error}) {

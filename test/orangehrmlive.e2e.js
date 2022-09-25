@@ -44,6 +44,7 @@ const {
 const AddTitlePage = require('../pageobjects/AddTitlePage');
 const EditTitlePage = require('../pageobjects/EditTitlePage');
 const DeleteModal = require('../pageobjects/modals/DeleteModal');
+const SuccessModal = require('../pageobjects/modals/SuccessModal');
 
 describe(`Should login to ${baseUrl}, succesfully create new job, change it, delete it and logout`, () => {
     before( async () => {
@@ -256,7 +257,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it('Should click on the Save button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed');
         await AddTitlePage.clickSave();
-        const success = AddTitlePage.successModal
+        const success = SuccessModal.successModal
         await expect(success).toBeDisplayed({ message: 'Success modal is not displayed!'});
     });
     it(`Should check the Job Page table has the created Job Title "${jobTitle}" displayed`, async () => {
@@ -341,7 +342,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
     it('Should click on the Save button and check the success message is displayed', async () => {
         console.info('Check the success message is displayed after save the Job Title');
         await EditTitlePage.clickSave();
-        const success = EditTitlePage.successModal;
+        const success = SuccessModal.successModal;
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
 
@@ -366,7 +367,7 @@ describe(`Should login to ${baseUrl}, succesfully create new job, change it, del
         await JobPage.markCheckbox(JobPage.newCheckbox);
         await JobPage.deleteJobTitle(JobPage.newDeleteBtn);
         await DeleteModal.clickModalDelete();
-        const success = JobPage.successModal;
+        const success = SuccessModal.successModal;
         await expect(success).toBeDisplayed({ message: 'Success model is not displayed!'});
     })
     it('Should check the deleted Job Title field is not existing', async () => {

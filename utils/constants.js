@@ -12,13 +12,14 @@ module.exports = {
     saveUrl: 'saveJobTitle',
     jobHeaderAdd: 'Add Job Title',
     jobHeaderEdit: 'Edit Job Title',
-    jobTitle: 'Intern1',
+    jobTitle: 'Intern',
     descriptionPlaceholder: 'Type description here',
     jobDescription: 'Test cases creation',
     notePlaceholder: 'Add note',
     jobNote: 'Should perform test cases creation, maintenance and results reporting',
     saveBtnClass: 'orangehrm-left-space',
     errorMsg: 'Already exists',
-    newJobTitle: 'Student1',
+    newJobTitle: 'Student',
     newJobDescription: 'Practice testing',
+    success: 'Success'
 }

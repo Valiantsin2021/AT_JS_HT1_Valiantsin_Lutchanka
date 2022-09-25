@@ -19,9 +19,6 @@ class AddTitlePage extends BasePage {
     get errorMessage () {
         return $('.oxd-input-field-error-message')
     }
-    get successModal () {
-        return $('div.oxd-toast-content--success')
-    }
     async clickSave () {
         await this.saveBtn.waitAndClick();
     }

@@ -9,9 +9,6 @@ class JobPage extends BasePage{
     get addBtn () {
         return $('.oxd-button')
     }
-    get successModal () {
-        return $('div.oxd-toast-content--success')
-    }
     get tableHeader () {
         return $('span*=Records Found')
     }
@@ -35,9 +32,6 @@ class JobPage extends BasePage{
     }
     get newGridParentEl () {
         return $(`//div[text()="${newJobTitle}"]/ancestor:: div[@class="oxd-table-row oxd-table-row--with-border"]`)
-    }
-    get successModal () {
-        return $('div.oxd-toast-content--success')
     }
     get checkbox () {
         return this.gridParentEl.$(`span`)

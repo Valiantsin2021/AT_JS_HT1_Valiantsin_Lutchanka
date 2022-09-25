@@ -13,9 +13,6 @@ class EditTitlePage extends BasePage {
     get saveBtn () {
         return $('button[type="submit"]')
     }
-    get successModal () {
-        return $('div.oxd-toast-content--success')
-    }
     async inputJobTitle (jobTitle) {
         await this.jobTitleInput.waitAndSetValue(jobTitle);
     }
