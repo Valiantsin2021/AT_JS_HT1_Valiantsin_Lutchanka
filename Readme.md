@@ -26,6 +26,7 @@
 9.  Jenkinsfile (e2e, negative and smoke suites run with Chrome browser and artefacts saved)
 10. Github Actions yml file (e2e and negative suites run with Chrome browser and artefacts saved)
 11. Allure report publish on gh-pages
+12. Add configuration file for debugger
 
 ## Extras
 #### Negative login test suite added (test factory for negative test data)
