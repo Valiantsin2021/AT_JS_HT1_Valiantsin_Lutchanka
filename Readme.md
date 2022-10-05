@@ -2,16 +2,18 @@
 
 ## This repository purpose is to functional test automation of [Orange hrm project] https://opensource-demo.orangehrmlive.com/
 
+## Test report page https://valiantsin2021.github.io/AT_JS_HT1_Valiantsin_Lutchanka/
+
 ## The test suites purpose is to perform the following assertions:
 
-##### 1. login to the page with valid credentials, add new Job Title 'Intern' (go to Admin -> Job - Job Titles -> Click on the Add button), add Job Description: free text up to 20 chars, add note, save changes.
-##### 2. Check newly added title is visible on the grid
-##### 3. Modify the created Job Title to 'Student'(select checkbox of created field -> click on the Edit button), change Job Description: free text up to 20 chars, save changes
-##### 4. Check that changes are visible on the Job Title page
-##### 5. Select modified field, click the Remove button and make sure the field is removed.
-##### 6. Negative test on login with invalid credentials
-##### 7. Negative test on create the same Job Title (should show error message)
-##### 8. Logout from the webpage
+1. login to the page with valid credentials, add new Job Title 'Intern' (go to Admin -> Job - Job Titles -> Click on the Add button), add Job Description: free text up to 20 chars, add note, save changes.
+2. Check newly added title is visible on the grid
+3. Modify the created Job Title to 'Student'(select checkbox of created field -> click on the Edit button), change Job Description: free text up to 20 chars, save changes
+4. Check that changes are visible on the Job Title page
+5. Select modified field, click the Remove button and make sure the field is removed.
+6. Negative test on login with invalid credentials
+7. Negative test on create the same Job Title (should show error message)
+8. Logout from the webpage
 
 ## Job done:
 
