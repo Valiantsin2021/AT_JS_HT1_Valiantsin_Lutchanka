@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git download') {
             steps {
-                git credentialsId: 'ce02e462-2d72-4f92-a2ac-2fce65442e18', url: 'https://github.com/Valiantsin2021/test.git'
+                git 'https://github.com/Valiantsin2021/AT_JS_HT1_Valiantsin_Lutchanka.git'
             }
         }
         stage('Install') {
