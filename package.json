@@ -34,7 +34,7 @@
         "rimraf": "^3.0.2",
         "wdio-chromedriver-service": "^7.3.2",
         "wdio-edgedriver-service": "^1.2.0",
-        "wdio-geckodriver-service": "^3.0.4",
+        "wdio-geckodriver-service": "^4.0.0",
         "cross-env": "^7.0.3"
     }
 }
