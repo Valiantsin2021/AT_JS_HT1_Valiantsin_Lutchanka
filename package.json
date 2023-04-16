@@ -30,7 +30,7 @@
         "@wdio/spec-reporter": "^7.24.0",
         "allure-commandline": "^2.18.1",
         "chai": "^4.3.6",
-        "chromedriver": "^105.0.0",
+        "chromedriver": "^112.0.0",
         "rimraf": "^3.0.2",
         "wdio-chromedriver-service": "^7.3.2",
         "wdio-edgedriver-service": "^1.2.0",
