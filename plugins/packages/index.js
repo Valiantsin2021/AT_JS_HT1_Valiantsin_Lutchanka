@@ -96,14 +96,6 @@ allure.api.addTranslation('pl', {
     }
 });
 
-allure.api.addTranslation('az', {
-    tab: {
-        packages: {
-            name: 'Paketlər'
-        }
-    }
-});
-
 allure.api.addTab('packages', {
     title: 'tab.packages.name', icon: 'fa fa-align-left',
     route: 'packages(/)(:testGroup)(/)(:testResult)(/)(:testResultTab)(/)',
