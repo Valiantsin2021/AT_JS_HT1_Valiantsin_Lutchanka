@@ -168,20 +168,6 @@ allure.api.addTranslation('pl', {
     }
 });
 
-allure.api.addTranslation('az', {
-    tab: {
-        behaviors: {
-            name: 'Davranışlar'
-        }
-    },
-    widget: {
-        behaviors: {
-            name: 'Hekayələr üzrə xüsusiyyətlər',
-            showAll: 'hamısını göstər'
-        }
-    }
-});
-
 allure.api.addTab('behaviors', {
     title: 'tab.behaviors.name', icon: 'fa fa-list',
     route: 'behaviors(/)(:testGroup)(/)(:testResult)(/)(:testResultTab)(/)',
